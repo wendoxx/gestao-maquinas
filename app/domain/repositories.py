@@ -42,3 +42,16 @@ class AssetRepository(ABC):
 
     @abstractmethod
     def remove(self, asset_id: int) -> None: ...
+
+class MaintenanceRepository(ABC):
+    @abstractmethod
+    def add(self, maintenance: Maintenance) -> Maintenance: ...
+
+    @abstractmethod
+    def list_by_asset(self, asset_id: int) -> list[Maintenance]: ...
+
+    @abstractmethod
+    def list_pending(self, until: date) -> list[Maintenance]: ...
+
+    @abstractmethod
+    def total_cost(self) -> float: ...
